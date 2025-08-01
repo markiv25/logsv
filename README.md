@@ -6,7 +6,7 @@
 
 ### Why LogSV?
 
-❌ **Graylog Problems:**
+❌ **Logs viewing tools Problems:**
 - Complex Elasticsearch setup
 - Heavy resource usage (>2GB RAM)
 - Complicated query language

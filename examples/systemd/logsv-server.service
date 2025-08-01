@@ -1,0 +1,18 @@
+[Unit]
+Description=LogSV Server
+After=network.target
+
+[Service]
+Type=simple
+User=logscope
+Group=logscope
+WorkingDirectory=/opt/logscope
+ExecStart=/usr/bin/node src/server/index.js
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=PORT=3001
+Environment=WS_PORT=8080
+
+[Install]
+WantedBy=multi-user.target

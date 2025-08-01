@@ -1,0 +1,41 @@
+{
+  "name": "logsv",
+  "version": "2.0.0",
+  "description": "Ultra-lightweight AI-powered log monitoring for developers - Better than Graylog!",
+  "main": "src/server/index.js",
+  "bin": {
+    "logsv": "./bin/logsv.js",
+    "logsv-server": "./bin/server.js",
+    "logsv-agent": "./bin/agent.js"
+  },
+  "scripts": {
+    "start": "node src/server/index.js",
+    "start:agent": "node src/agent/index.js",
+    "dev": "node src/server/index.js",
+    "test": "node test/test.js",
+    "install:global": "npm install -g .",
+    "docker:build": "docker build -t logsv:latest .",
+    "docker:run": "docker run -p 3001:3001 -p 8080:8080 -v /var/log:/logs:ro logsv:latest"
+  },
+  "keywords": [
+    "logging", "monitoring", "ai-powered", "real-time", 
+    "lightweight", "zero-config", "natural-language-search",
+    "better-than-graylog", "ultra-fast", "developer-friendly"
+  ],
+  "author": "LogSV Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "ws": "^8.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/logsv.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/logsv/issues"
+  },
+  "homepage": "https://github.com/yourusername/logsv#readme"
+}

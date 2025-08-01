@@ -1,0 +1,16 @@
+[Unit]
+Description=LogSV Agent
+After=network.target
+
+[Service]
+Type=simple
+User=logscope
+Group=logscope
+WorkingDirectory=/opt/logscope
+ExecStart=/usr/bin/node src/agent/index.js --config /etc/logscope/agent.config.js
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

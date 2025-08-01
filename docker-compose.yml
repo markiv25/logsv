@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  logscope-server:
+    build: .
+    ports:
+      - "3001:3001"  # Dashboard
+      - "8080:8080"  # Agent WebSocket
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - WS_PORT=8080
+    volumes:
+      - logscope-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/api/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Example agent service
+  logscope-agent:
+    build: .
+    depends_on:
+      - logscope-server
+    environment:
+      - LOGSCOPE_SERVER=ws://logscope-server:8080
+      - SERVER_NAME=Docker Agent
+    volumes:
+      - /var/log:/logs:ro
+    command: ["node", "src/agent/index.js"]
+    restart: unless-stopped
+
+volumes:
+  logscope-data:
+    driver: local
+
+networks:
+  default:
+    name: logscope-network

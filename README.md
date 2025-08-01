@@ -117,10 +117,7 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ### 🙋‍♀️ Support
 
-- **Documentation**: [docs.logsv.dev](https://docs.logsv.dev)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/logsv/issues)
-- **Discord**: [LogSV Community](https://discord.gg/logsv)
-- **Email**: hello@logsv.dev
+- **Issues**: [GitHub Issues](https://github.com/markiv25/logsv/issues)
 
 ---
 
